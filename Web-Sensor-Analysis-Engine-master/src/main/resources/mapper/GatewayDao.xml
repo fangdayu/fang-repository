@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.ustc.sensor.dao.GatewayDetailDao">
+    <select id="queryGatewayDetail" resultType="team.ustc.sensor.entity.GatewayDetail">
+		SELECT * FROM gateways_detail
+		where gateway_id = #{gatewayId}
+	</select>
+    <insert id="insertGatewayDetail" parameterType="team.ustc.sensor.entity.GatewayDetail">
+		INSERT INTO
+		gateways_detail(gateway_id, gateway_name)
+		VALUES
+		(#{gatewayId},#{gatewayName})
+	</insert>
+    <!--    <select id="searchSensor" resultType="team.ustc.sensor.entity.SensorDetail">-->
+    <!--		SELECT sensor_id FROM sensors_detail WHERE sensor_name LIKE '%${word}%'-->
+    <!--		UNION-->
+    <!--		(SELECT sensor_id FROM sensors_detail WHERE company_name LIKE '%${word}%')-->
+    <!--	</select>-->
+    <!--    &lt;!&ndash;insert成功会返回一个名为ID的主键值，在数据库中为sensor_ID项&ndash;&gt;-->
+    <!--    <insert id="insertSensorDetail"  parameterType="team.ustc.sensor.entity.SensorDetail">-->
+    <!--		INSERT INTO-->
+    <!--		sensors_detail(sensor_id, sensor_name,sensor_type)-->
+    <!--		VALUES-->
+    <!--		(#{sensorId},#{sensorName},#{sensorType})-->
+    <!--	</insert>-->
+    <!--    <delete id="deleteSensorDetail">-->
+    <!--        DELETE FROM sensors_detail-->
+    <!--		WHERE sensor_id = #{sensorId}-->
+    <!--	</delete>-->
+</mapper>

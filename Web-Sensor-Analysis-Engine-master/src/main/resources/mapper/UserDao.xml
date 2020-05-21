@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 定义DAO层数据库操作(wang) -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.ustc.sensor.dao.UserDao">
+    <select id="queryUser" resultType="team.ustc.sensor.entity.User">
+		SELECT *
+		FROM users
+        WHERE username = #{username}
+	</select>
+	<insert id="addUser" parameterType="team.ustc.sensor.entity.User">
+		INSERT INTO
+		users(username, password)
+        VALUES
+		(#{username},#{password})
+	</insert>
+
+	<update id="editBalance" >
+		UPDATE users
+		SET balance = balance + #{price}
+		WHERE username = #{username}
+	</update>
+
+</mapper>

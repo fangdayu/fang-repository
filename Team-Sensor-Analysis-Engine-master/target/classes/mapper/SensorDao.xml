@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 定义DAO层数据库操作(wang) -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.ustc.sensor.dao.SensorDao">
+<!--    查询全部传感器sql    -->
+    <select id="querySensorAll" resultType="team.ustc.sensor.entity.Sensor">
+		SELECT *
+		FROM sensor
+		ORDER BY id
+		DESC
+	</select>
+<!--    根据id查询传感器sql  -->
+    <select id="querySensorById" resultType="team.ustc.sensor.entity.Sensor">
+		SELECT *
+		FROM sensor
+		where
+		id = #{id}
+	</select>
+<!--    组合模糊查询sql  -->
+    <select id="combinedQuery" resultType="team.ustc.sensor.entity.Sensor">
+        SELECT *
+        FROM sensor
+        where
+        <if test="brand != 'null'">
+            brand like '%${brand}%' and
+        </if>
+        <if test="product_id != 'null'">
+            product_id like '%${product_id}%' and
+        </if>
+        <if test="type != 'null'">
+            type like '%${type}%' and
+        </if>
+        <if test="type_detail != 'null'">
+            type_detail like '%${type_detail}%' and
+        </if>
+        <if test="input != 'null'">
+            input like '%${input}%' and
+        </if>
+        <if test="output != 'null'">
+            output like '%${output}%' and
+        </if>
+        <if test="using_environment != 'null'">
+            using_environment like '%${using_environment}%' and
+        </if>
+        <if test="sRange != 'null'">
+            sRange like '%${sRange}%' and
+        </if>
+        <if test="sLevel != 'null'">
+            sLevel like '%${sLevel}%' and
+        </if>
+        <if test="application != 'null'">
+            application like '%${application}%' and
+        </if>
+        <if test="description != 'null'">
+            description like '%${description}%' and
+        </if>
+        <if test="strength != 'null'">
+            strength like '%${strength}%' and
+        </if>
+        <if test="more_detail != 'null'">
+            more_detail like '%${more_detail}%' and
+        </if>
+        1
+    </select>
+
+<!--    插入传感器sql  -->
+    <insert id="addSensor" parameterType="team.ustc.sensor.entity.Sensor">
+		INSERT INTO
+		sensor(brand, product_id, type, type_detail, input,
+            output, using_environment, sRange, sLevel, application, description, strength, more_detail)
+		VALUES (#{brand},#{product_id},#{type},#{type_detail},#{input},#{output},#{using_environment},#{sRange},
+			#{sLevel},#{application},#{description},#{strength},#{more_detail})
+	</insert>
+
+<!--    更新传感器sql  -->
+    <update id="updateSensor" parameterType="team.ustc.sensor.entity.Sensor">
+        update sensor
+        set ${columnName} = #{newColumn}
+        where id = #{id}
+    </update>
+
+<!--    删除传感器sql  -->
+    <delete id="deleteSensor" >
+        DELETE FROM
+		sensor
+		WHERE
+		id = #{id}
+	</delete>
+</mapper>

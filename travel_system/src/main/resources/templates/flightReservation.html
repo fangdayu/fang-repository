@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>航班预订页面</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+</head>
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="http://localhost:8080/">旅游预订系统</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="http://localhost:8080/">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/addFlight">添加信息</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/flightReservation">预订服务</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/queryFlight">查询信息</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <h3>请输入要预订的客户及航班ID：</h3>
+
+    <form th:action="@{/flightReservation}" method="post">
+
+        <div class="form-group" >
+            <input name="reservations_id" type="hidden" th:value="${reservation.reservations_id}">
+            <input name="resvType" type="hidden" th:value="${reservation.resvType}">
+            <label>客户ID</label>
+            <input name="custId" type="text" class="form-control" placeholder="客户ID" th:value="${reservation.custId}">
+            <label>航班ID</label>
+            <input name="resvKey" type="text" class="form-control" placeholder="航班ID" th:value="${reservation.resvKey}">
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="javascript:alert('航班预订信息已成功添加！')">添加</button>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>航班ID</th>
+                <th>航班号</th>
+                <th>价格</th>
+                <th>座位数</th>
+                <th>空余座位数</th>
+                <th>出发城市</th>
+                <th>到达城市</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="f:${listf}">
+                <td th:text="${f.flights_id}"></td>
+                <td th:text="${f.flightNum}"></td>
+                <td th:text="${f.price}"></td>
+                <td th:text="${f.numSeats}"></td>
+                <td th:text="${f.numAvail}"></td>
+                <td th:text="${f.fromCity}"></td>
+                <td th:text="${f.arivCity}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

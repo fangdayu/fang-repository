@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>航班添加页面</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+</head>
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="http://localhost:8080/">旅游预订系统</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="http://localhost:8080/">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/addFlight">添加信息</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/flightReservation">预订服务</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/queryFlight">查询信息</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<h3>请输入要添加的航班信息：</h3>
+
+<form th:action="@{/addFlight}" method="post">
+
+    <div class="form-group">
+        <input name="flights_id" type="hidden" th:value="${flight.flights_id}">
+<!--        <label for="exampleFormControlSelect1">航班号</label>-->
+<!--        <select class="form-control" id="exampleFormControlSelect1" th:value="${flight.flightNum}">-->
+<!--            <option>CA1101</option>-->
+<!--            <option>CA1102</option>-->
+<!--            <option>CZ0023</option>-->
+<!--            <option>CZ0027</option>-->
+<!--            <option>EU2203</option>-->
+<!--            <option>EU2204</option>-->
+<!--        </select>-->
+        <label>航班号</label>
+        <input name="flightNum" type="text" class="form-control" placeholder="航班号" th:value="${flight.flightNum}">
+        <label>价格</label>
+        <input name="price" type="text" class="form-control" placeholder="价格" th:value="${flight.price}">
+        <label>座位数</label>
+        <input name="numSeats" type="text" class="form-control" placeholder="座位数" th:value="${flight.numSeats}">
+        <label>空余座位数</label>
+        <input name="numAvail" type="text" class="form-control" placeholder="空余座位数" th:value="${flight.numAvail}">
+        <label>出发城市</label>
+        <input name="fromCity" type="text" class="form-control" placeholder="出发城市" th:value="${flight.fromCity}">
+        <label>到达城市</label>
+        <input name="arivCity" type="text" class="form-control" placeholder="到达城市" th:value="${flight.arivCity}">
+    </div>
+
+    <button type="submit" class="btn btn-primary" onclick="javascript:alert('航班信息已成功添加！')">添加</button>
+</form>
+</main>
+</body>
+</html>

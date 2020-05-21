@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旅游预订系统</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="http://localhost:8080/">旅游预订系统</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="http://localhost:8080/">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/addFlight">添加信息</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/flightReservation">预订服务</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/queryFlight">查询信息</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1>欢迎来到旅游出行管理系统</h1>
+<h3>请点击下方对应按钮选择功能</h3>
+<br>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<button type="button" class="btn btn-primary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/addFlight'">添加航班信息</button>
+<button type="button" class="btn btn-primary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/addCar'">添加出租车信息</button>
+<button type="button" class="btn btn-primary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/addHotel'">添加宾馆信息</button>
+<button type="button" class="btn btn-primary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/addCustomer'">添加游客信息</button>
+<br>
+<br>
+<button type="button" class="btn btn-success btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/flightReservation'">预订航班服务</button>
+<button type="button" class="btn btn-success btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/carReservation'">预订出租车服务</button>
+<button type="button" class="btn btn-success btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/hotelReservation'">预订宾馆服务</button>
+<br>
+<br>
+
+<button type="button" class="btn btn-secondary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/queryFlight'">查询航班信息</button>
+<button type="button" class="btn btn-secondary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/queryCar'">查询出租车信息</button>
+<button type="button" class="btn btn-secondary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/queryHotel'">查询宾馆信息</button>
+<button type="button" class="btn btn-secondary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/queryCustomer'">查询游客信息</button>
+<button type="button" class="btn btn-secondary btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/queryReservation'">查询预订信息</button>
+<br>
+<br>
+<button type="button" class="btn btn-dark btn-lg" onclick="javascrtpt:window.location.href='http://localhost:8080/queryRoute'">查询旅行路线</button>
+<br>
+<br>
+</main>
+
+</body>
+</html>

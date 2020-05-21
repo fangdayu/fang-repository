@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.ustc.sensor.dao.SensorViewDao">
+    <select id="querySensorView" resultType="team.ustc.sensor.entity.SensorView">
+        SELECT * FROM sensors_view
+        WHERE sensor_id = #{sensorId}
+    </select>
+    <select id="querySensorNum" resultType="int">
+		SELECT COUNT(*) FROM sensors_view
+		<if test="type!=null and type!=''">WHERE sensor_type = #{type}</if>
+
+	</select>
+    <select id="querySensorPage" resultType="team.ustc.sensor.entity.SensorView">
+		SELECT * FROM sensors_view
+        <if test="type!=null and type!=''">WHERE sensor_type = #{type}</if>
+		ORDER BY id ASC
+		LIMIT #{pageStart},#{pageSize}
+	</select>
+    <!--insert成功会返回一个名为ID的主键值，在数据库中为sensor_id项-->
+    <insert id="insertSensorView" useGeneratedKeys="true" keyProperty="ID"
+            keyColumn="sensor_id" parameterType="team.ustc.sensor.entity.SensorView">
+		INSERT INTO
+		sensors_view(sensor_name,sensor_type)
+		VALUES
+		(#{sensorName},#{sensorType})
+	</insert>
+    <delete id="deleteSensorView">
+        DELETE FROM sensors_view
+		WHERE sensor_id = #{sensorId}
+	</delete>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 定义DAO层数据库操作(wang) -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.ustc.sensor.dao.UserDao">
+    <!--	根据用户名查询用户sql  -->
+    <select id="queryUser" resultType="team.ustc.sensor.entity.User">
+		SELECT *
+		FROM user
+        WHERE username = #{username}
+	</select>
+    <!--	根据用户id查询sql  -->
+    <select id="queryUserById" resultType="team.ustc.sensor.entity.User">
+		SELECT *
+		FROM user
+        WHERE userId = #{id}
+	</select>
+    <!--	添加个人用户sql  -->
+    <insert id="addUser" parameterType="team.ustc.sensor.entity.User">
+		INSERT INTO
+		user(username, password,type)
+        VALUES
+		(#{username},#{password},0)
+	</insert>
+    <!--	更新密码sql  -->
+    <update id="updateUserPassword" parameterType="team.ustc.sensor.entity.User">
+		update sensor.user
+		set password = #{password}
+		where username = #{username}
+	</update>
+
+    <!--    删除用户sql  -->
+    <delete id="deleteUser">
+        DELETE FROM
+		user
+		WHERE
+		userId = #{id}
+	</delete>
+
+</mapper>
